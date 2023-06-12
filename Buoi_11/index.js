@@ -33,8 +33,8 @@
 
 // console.log(reg.test(str));
 
-const reg = /(\.com|\.org)$/i;
+// const reg = /(\.com|\.org)$/i;
 
-const domain = "facebook.vn";
+// const domain = "facebook.vn";
 
-console.log("isDomain", reg.test(domain));
+// console.log("isDomain", reg.test(domain));
