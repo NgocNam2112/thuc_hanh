@@ -1,4 +1,8 @@
 const container = document.getElementById("container");
+const cModal = document.getElementById("c__modal");
+const cName = document.getElementById("c_name");
+const cCreate = document.getElementById("c_create");
+const cImg = document.getElementById("c_img");
 
 const BASE_URL = "https://6487122fbeba6297278fd770.mockapi.io/testing";
 
@@ -16,7 +20,9 @@ const fetchApi = async () => {
               <h2>${item.name}</h2>
               <p>${item.createdAt}</p>
               <div class="c__btn">
-                <button>Detail</button>
+                <button onclick="handleDetail(${JSON.stringify(item.id)
+                  .split('"')
+                  .join("&quot;")})">Detail</button>
                 <button onclick="handleDetele(${JSON.stringify(item.id)
                   .split('"')
                   .join("&quot;")})">Delete</button>
@@ -30,6 +36,8 @@ const fetchApi = async () => {
   }
 };
 
+fetchApi();
+
 const handleDetele = async (itemId) => {
   try {
     const { data } = await axios.delete(`${BASE_URL}/${itemId}`);
@@ -39,4 +47,18 @@ const handleDetele = async (itemId) => {
   } catch (error) {}
 };
 
-fetchApi();
+const handleDetail = async (itemId) => {
+  try {
+    const { data } = await axios.get(BASE_URL + "/" + itemId);
+    if (data !== null) {
+      cModal.style.display = "flex";
+      cName.innerHTML = data.name;
+      cCreate.innerHTML = data.createdAt;
+      cImg.setAttribute("src", data.avatar);
+    }
+  } catch (error) {}
+};
+
+const handleCloseModal = () => {
+  cModal.style.display = "none";
+};

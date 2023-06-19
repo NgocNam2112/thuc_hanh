@@ -9,7 +9,31 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
+    <div class="btn__create">
+      <button>Create new +</button>
+    </div>
     <main class="container" id="container"></main>
+
+    <div class="c__modal" id="c__modal" onclick="handleCloseModal()">
+      <div class="modal-content">
+        <div>
+          <p>Name</p>
+          <p id="c_name"></p>
+        </div>
+        <div>
+          <p>Created at</p>
+          <p id="c_create">current</p>
+        </div>
+        <div>
+          <p>Avatar</p>
+          <img
+            src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/947.jpg"
+            alt=""
+            id="c_img"
+          />
+        </div>
+      </div>
+    </div>
 
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
